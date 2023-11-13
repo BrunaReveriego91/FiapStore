@@ -36,14 +36,16 @@ namespace FiapStore.Controllers
         }
 
         [HttpPut]
-        public IActionResult AlterarUsuario()
+        public IActionResult AlterarUsuario(Usuario usuario)
         {
+            this.usuarioRepository.AlterarUsuario(usuario);
             return Ok("Usuário alterado com sucesso!");
         }
 
-        [HttpDelete]
-        public IActionResult DeletarUsuario()
+        [HttpDelete("{id}")]
+        public IActionResult DeletarUsuario(int id)
         {
+            this.usuarioRepository.DeletarUsuario(id);
             return Ok("Usuário deletado com sucesso!");
         }
     }
