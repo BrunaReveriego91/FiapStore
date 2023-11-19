@@ -9,8 +9,8 @@ namespace FiapStore.Repository
         protected string ConnectionString => _connectionString;
 
         public DapperRepository(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetValue<string>("ConnectionStrings: ConnectionString");
+        {                                                                   
+            _connectionString = configuration.GetValue<string>("ConnectionStrings:ConnectionString");
         }
 
         public abstract void Alterar(T entidade);

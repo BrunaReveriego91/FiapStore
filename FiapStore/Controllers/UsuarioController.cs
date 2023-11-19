@@ -1,4 +1,5 @@
-﻿using FiapStore.Entity;
+﻿using FiapStore.DTO;
+using FiapStore.Entity;
 using FiapStore.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,12 @@ namespace FiapStore.Controllers
             this.usuarioRepository = usuarioRepository;
         }
 
+        [HttpGet("obter-todos-com-pedidos/{id}")]
+        public IActionResult ObterTodosComPedidos(int id)
+        {
+            return Ok(this.usuarioRepository.ObterComPedidos(id));
+        }
+
 
         [HttpGet("obter-todos-usuario")]
         public IActionResult ObterTodosUsuario()
@@ -29,16 +36,16 @@ namespace FiapStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult CadastrarUsuario([FromBody] Usuario usuario)
+        public IActionResult CadastrarUsuario([FromBody] CadastrarUsuarioDTO usuarioDto)
         {
-            this.usuarioRepository.Cadastrar(usuario);
+            this.usuarioRepository.Cadastrar(new Usuario(usuarioDto));
             return Ok("Usuário criado com sucesso!");
         }
 
         [HttpPut]
-        public IActionResult AlterarUsuario(Usuario usuario)
+        public IActionResult AlterarUsuario([FromBody] AlterarUsuarioDTO usuarioDto)
         {
-            this.usuarioRepository.Alterar(usuario);
+            this.usuarioRepository.Alterar(new Usuario(usuarioDto));
             return Ok("Usuário alterado com sucesso!");
         }
 
