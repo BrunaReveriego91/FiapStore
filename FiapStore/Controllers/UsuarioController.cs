@@ -10,10 +10,13 @@ namespace FiapStore.Controllers
     public class UsuarioController : ControllerBase
     {
         private IUsuarioRepository usuarioRepository;
+        private readonly ILogger<UsuarioController> logger;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        public UsuarioController(IUsuarioRepository usuarioRepository,
+                                 ILogger<UsuarioController> logger)
         {
             this.usuarioRepository = usuarioRepository;
+            this.logger = logger;
         }
 
         [HttpGet("obter-todos-com-pedidos/{id}")]
@@ -26,6 +29,7 @@ namespace FiapStore.Controllers
         [HttpGet("obter-todos-usuario")]
         public IActionResult ObterTodosUsuario()
         {
+            this.logger.LogInformation("Executando método ObterTodosUsuario");
             return Ok(this.usuarioRepository.ObterTodos());
         }
 
