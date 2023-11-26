@@ -5,7 +5,7 @@
 namespace FiapStore.Migrations
 {
     /// <inheritdoc />
-    public partial class primeiramigration : Migration
+    public partial class primeira_migration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,8 @@ namespace FiapStore.Migrations
                     Id = table.Column<int>(type: "INT", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeProduto = table.Column<string>(type: "VARCHAR(100)", nullable: true),
-                    UsuarioId = table.Column<int>(type: "INT", nullable: false)
+                    UsuarioId = table.Column<int>(type: "INT", nullable: false),
+                    PrecoTotal = table.Column<decimal>(type: "decimal(18,0)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FiapStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231122215424_Adicionando_Preco_Pedido")]
-    partial class Adicionando_Preco_Pedido
+    [Migration("20231126152950_primeira_migration")]
+    partial class primeira_migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,7 @@ namespace FiapStore.Migrations
             modelBuilder.Entity("FiapStore.Entity.Pedido", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -50,6 +51,7 @@ namespace FiapStore.Migrations
             modelBuilder.Entity("FiapStore.Entity.Usuario", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));

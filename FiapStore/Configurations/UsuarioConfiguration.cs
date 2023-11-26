@@ -11,7 +11,7 @@ namespace FiapStore.Configurations
             builder.ToTable("Usuario");
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id)
-            .HasColumnType("INT").ValueGeneratedNever().UseIdentityColumn();
+            .HasColumnType("INT").UseIdentityColumn();
             builder.Property(u => u.Nome).HasColumnType("VARCHAR(100)");
             builder.HasMany(u => u.Pedidos)
                 .WithOne(p => p.Usuario)
