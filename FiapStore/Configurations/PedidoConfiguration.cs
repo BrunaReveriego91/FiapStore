@@ -12,6 +12,7 @@ namespace FiapStore.Configurations
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).HasColumnType("INT").ValueGeneratedNever().UseIdentityColumn();
             builder.Property(p => p.NomeProduto).HasColumnType("VARCHAR(100)");
+            builder.Property(p => p.PrecoTotal).HasColumnType("decimal");
             builder.HasOne(p => p.Usuario)
                 .WithMany(u => u.Pedidos)
                 .HasPrincipalKey(u => u.Id);
