@@ -40,6 +40,7 @@ namespace FiapStore.Repository
 
         public IList<T> ObterTodos()
         {
+            throw new Exception("DEU ERRO!");
             return _dbSet.ToList();
         }
     }

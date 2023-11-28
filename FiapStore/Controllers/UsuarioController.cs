@@ -29,8 +29,15 @@ namespace FiapStore.Controllers
         [HttpGet("obter-todos-usuario")]
         public IActionResult ObterTodosUsuario()
         {
-            this.logger.LogInformation("Executando método ObterTodosUsuario");
-            return Ok(this.usuarioRepository.ObterTodos());
+            try
+            {
+                return Ok(this.usuarioRepository.ObterTodos());
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, $"{DateTime.Now} | Exception forçada: {ex.Message}");
+                return BadRequest();
+            }
         }
 
         [HttpGet("obter-por-usuario-id/{id}")]
@@ -43,7 +50,9 @@ namespace FiapStore.Controllers
         public IActionResult CadastrarUsuario([FromBody] CadastrarUsuarioDTO usuarioDto)
         {
             this.usuarioRepository.Cadastrar(new Usuario(usuarioDto));
-            return Ok("Usuário criado com sucesso!");
+            var mensagem = $"Criei o usuário de mome {usuarioDto.Nome}";
+            this.logger.LogWarning(mensagem);
+            return Ok(mensagem);
         }
 
         [HttpPut]
