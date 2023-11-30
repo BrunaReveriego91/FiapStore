@@ -80,5 +80,10 @@ namespace FiapStore.Repository
 
             return resultado.Values.FirstOrDefault();
         }
+
+        public Usuario ObterPorNomeUsuarioESenha(string nomeUsuario, string senha)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
